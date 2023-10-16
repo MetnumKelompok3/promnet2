@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Pemesanan Coffee</title>
+    <script>
+    function tampilHasil()
+    {
+        var nama = document.getElementById("nama").value;
+        var jenisKopi = document.getElementById("jenisKopi").value;
+        var alamatPemesan = document.getElementById("alamatPemesan").value;
+        var cake = document.getElementById("makananPelengkap1").checked;
+        var brownies = document.getElementById("makananPelengkap2").checked;
+        var dalgonaCandy = document.getElementById("makananPelengkap3").checked;
+
+        var hargaKopi = 0;
+        switch (jenisKopi) {
+            case "kopiarabika":
+                hargaKopi = 10000;
+                break;
+            case "kopirobusta":
+                hargaKopi = 15000;
+                break;
+            case "kopiliberika":
+                hargaKopi = 20000;
+                break;
+            case "kopiekselsa":
+                hargaKopi = 25000;
+                break;
+        }
+
+        var hargaMakananPelengkap = 0;
+        if (cake) {
+            hargaMakananPelengkap += 5000;
+        }
+        if (brownies) {
+            hargaMakananPelengkap += 10000;
+        }
+        if (dalgonaCandy) {
+            hargaMakananPelengkap += 15000;
+        }
+
+        var totalHarga = hargaKopi + hargaMakananPelengkap;
+
+        var hasilElement = document.getElementById("hasil");
+        hasilElement.innerHTML = "<strong>Hasil Pemesanan:</strong><br>";
+        hasilElement.innerHTML += "<strong>Nama:</strong> " + nama + "<br>";
+        hasilElement.innerHTML += "<strong>Alamat:</strong> " + alamatPemesan + "<br>";
+        hasilElement.innerHTML += "<strong>Pesanan Jenis Kopi:</strong> " + jenisKopi + "<br>";
+        hasilElement.innerHTML += "<strong>Total Harga:</strong> Rp " + totalHarga.toLocaleString() + "<br>";
+    }
+    </script> 
+</head>
+<body>
+
+<h2>Form Pemesanan Coffee</h2>
+
+<div class="container">
+  <form>
+  <div class="row">
+    <div class="col-25">
+      <label for="nama">Nama Lengkap Pemesan</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="nama" placeholder="Masukan Nama Anda ...">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="jenisKopi">Pilih Jenis Kopi</label>
+    </div>
+    <div class="col-75">
+      <select id="jenisKopi">
+        <option value="kopiarabika">Kopi Arabika</option>
+        <option value="kopirobusta">Kopi Robusta</option>
+        <option value="kopiliberika">Kopi Liberika</option>
+        <option value="kopiekselsa">Kopi Ekselsa</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="alamatPemesan">Alamat Pemesan</label>
+    </div>
+    <div class="col-75">
+      <textarea id="alamatPemesan" placeholder="Alamat Pemesan.." style="height:200px"></textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="ukuran">Makanan Pelengkap</label>
+    </div>
+    <div class="col-25">
+        <input type="checkbox" id="makananPelengkap1" value="Cake">
+        <label for="makananPelengkap1"> Cake</label><br>
+        <input type="checkbox" id="makananPelengkap2" value="Brownies">
+        <label for="makananPelengkap2"> Brownies</label><br>
+        <input type="checkbox" id="makananPelengkap3" value="Dalgona Candy">
+        <label for="makananPelengkap3"> Dalgona Candy</label>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <input type="button" onClick="tampilHasil()" value="Simpan">
+  </div>
+  </form>
+</div>
+
+<div class="row">
+    <div class="col-100">
+      <p id="hasil"></p>
+    </div>
+  </div>
+
+</body>
+</html>
